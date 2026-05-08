@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FF Bot Dashboard</title>
+    <style>
+        body { background: #0f172a; color: white; font-family: sans-serif; text-align: center; }
+        .card { background: #1e293b; padding: 20px; border-radius: 10px; width: 300px; margin: 50px auto; border: 1px solid #f43f5e; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; }
+        button { background: #f43f5e; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>FF CLAN MANAGEMENT</h2>
+    <div class="card">
+        <h3>Login to Bot</h3>
+        <input type="text" id="uid" placeholder="Enter UID">
+        <input type="password" id="pass" placeholder="Enter Password">
+        <button onclick="startBot()">Execute Request</button>
+        <p id="status"></p>
+    </div>
+
+    <script>
+        function startBot() {
+            const uid = document.getElementById('uid').value;
+            const pass = document.getElementById('pass').value;
+            document.getElementById('status').innerText = "Processing...";
+            
+            fetch('/start', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({uid: uid, password: pass})
+            }).then(res => res.json()).then(data => {
+                document.getElementById('status').innerText = data.message;
+            });
+        }
+    </script>
+</body>
+</html>
