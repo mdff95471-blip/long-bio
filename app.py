@@ -19,5 +19,5 @@ def keep_alive():
 
 if __name__ == "__main__":
     keep_alive()
-    # এখানে আপনার বটের আসল মেইন ফাংশনটি কল করবেন
-    # যেমন: os.system("python3 main.py") অথবা আপনার বটের রান করার কমান্ড
+    # আপনার বটের মূল ফাইলটি (main.py) রান করার কমান্ড
+    os.system("python3 main.py")
